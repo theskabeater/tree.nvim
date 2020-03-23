@@ -25,6 +25,7 @@ include_directories(
     ${MSGPACK_INCLUDE_DIRS}
 )
 
+# include(GNUInstallDirs)
 add_executable(tree
     src/main.cpp
     src/app/tree.cpp
