@@ -21,7 +21,7 @@ environment:
     GENERATOR: Visual Studio 14
     ARCHI: x64
     BOOST_ROOT: C:\Libraries\boost_1_69_0
-    BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\libs
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\lib32-msvc-14.0
     BOOST_INCLUDEDIR: C:\Libraries\boost_1_69_0\boost
 configuration:
 - RelWithDebInfo
@@ -43,7 +43,7 @@ build_script:
 - cd "%BOOST_ROOT%\libs"
 - dir
 - cd "%APPVEYOR_BUILD_FOLDER%"
-- set PATH=%BOOST_ROOT%;%Boost_LIBRARIES%;%QTPATH%;%QTPATH%/bin;%PATH%
+- set PATH=%BOOST_LIBRARYDIR%;%BOOST_ROOT%;%QTPATH%;%QTPATH%/bin;%PATH%
 - echo %PATH%
 - mkdir build
 - cd build
