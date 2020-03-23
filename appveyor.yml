@@ -21,7 +21,7 @@ environment:
     GENERATOR: Visual Studio 14
     ARCHI: x64
     BOOST_ROOT: C:\Libraries\boost_1_69_0
-    Boost_LIBRARIES: C:\Libraries\boost_1_69_0\lib64-msvc-14.0
+    Boost_LIBRARIES: C:\Libraries\boost_1_69_0\lib32-msvc-14.0
     Boost_INCLUDE_DIRS: C:\Libraries\boost_1_69_0\boost
 configuration:
 - RelWithDebInfo
