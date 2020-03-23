@@ -54,7 +54,7 @@ build_script:
 - cd build
 - cmake -G "%GENERATOR%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
 - cmake --build . --config Release --target install
-- windeployqt ./INSTALL/bin/tree --no-plugins --no-translations
+- windeployqt ./INSTALL/bin/tree.exe --no-plugins --no-translations
 test_script:
 - set PATH=%BOOST_ROOT%;%QTPATH%;%QTPATH%/bin;%PATH%
 - echo %PATH%
