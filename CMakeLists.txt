@@ -24,7 +24,7 @@ include_directories(
     ${Boost_INCLUDE_DIR}
     ${MSGPACK_INCLUDE_DIRS}
 )
-
+add_definitions( -DBOOST_ALL_NO_LIB )
 # include(GNUInstallDirs)
 add_executable(tree
     src/main.cpp
