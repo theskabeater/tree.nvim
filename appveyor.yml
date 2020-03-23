@@ -19,9 +19,9 @@ environment:
   #   BOOST_INCLUDEDIR: C:\msys64\mingw64\include\boost
   #   RELEASE_ARTIFACT: true
   - PlatformToolset: v140
-    QTPATH: C:\Qt\5.11\msvc2015
+    # QTPATH: C:\Qt\5.11\msvc2015
     GENERATOR: Visual Studio 15 2017
-    ARCHI: x64
+    # ARCHI: x64
     BOOST_ROOT: C:\Libraries\boost_1_69_0
     # BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\lib32-msvc-17.1
     # BOOST_INCLUDEDIR: C:\Libraries\boost_1_69_0\boost
@@ -40,12 +40,10 @@ install:
 build_script:
 - cd "%BOOST_ROOT%"
 - dir
-- cd "%BOOST_ROOT%\boost"
-- dir
 - cd "%BOOST_ROOT%\libs"
 - dir
 - cd "%APPVEYOR_BUILD_FOLDER%"
-- set PATH=%BOOST_ROOT%;%QTPATH%;%QTPATH%/bin;%PATH%
+# - set PATH=%QTPATH%;%QTPATH%/bin;%PATH%
 - echo %PATH%
 - mkdir build
 - cd build
