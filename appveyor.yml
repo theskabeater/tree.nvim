@@ -50,13 +50,13 @@ build_script:
 - cd build
 - cmake -G "%GENERATOR%" -DCMAKE_BUILD_TYPE=Release -DBoost_USE_STATIC_LIBS=ON -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
 - cmake --build . --config Release --target install
-- windeployqt ../INSTALL/bin/tree.exe --no-plugins --no-translations
+# - windeployqt ../INSTALL/bin/tree.exe --no-plugins --no-translations
 test_script:
 - set PATH=%BOOST_ROOT%;%QTPATH%;%QTPATH%/bin;%PATH%
 - echo %PATH%
 - cd "%APPVEYOR_BUILD_FOLDER%"/build
 - ctest -VV -C Release
-- ps: (Get-Item "$($env:APPVEYOR_BUILD_FOLDER)\INSTALL\bin\tree-nvim.exe").VersionInfo
+- ps: (Get-Item "$($env:APPVEYOR_BUILD_FOLDER)\INSTALL\bin\tree.exe").VersionInfo
 artifacts:
 - path: INSTALL
   name: tree-windows
