@@ -1,5 +1,6 @@
 image:
-  - Visual Studio 2019
+  - Visual Studio 2017
+  # - Visual Studio 2019
 version: '{build}'
 skip_tags: false
 shallow_clone: true
@@ -23,10 +24,13 @@ environment:
   #   RELEASE_ARTIFACT: true
   - PlatformToolset: v140
     # QTPATH: C:\Qt\5.11\msvc2015
-    # GENERATOR: Visual Studio 16 2019
+    QTPATH: C:\Qt\5.13\msvc2017
+    # GENERATOR: Visual Studio 15 2017
     GENERATOR: 'NMake Makefiles'
+    BOOST_ROOT: C:\Libraries\boost_1_69_0
     ARCHI: x86
-    BOOST_ROOT: C:\Libraries\boost_1_71_0
+    # GENERATOR: Visual Studio 16 2019
+    # BOOST_ROOT: C:\Libraries\boost_1_71_0
     # BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\lib32-msvc-17.1
     # BOOST_INCLUDEDIR: C:\Libraries\boost_1_69_0\boost
 configuration:
@@ -48,7 +52,7 @@ build_script:
 - cd "%BOOST_ROOT%\libs"
 - dir
 - cd "%APPVEYOR_BUILD_FOLDER%"
-# - set PATH=%QTPATH%;%QTPATH%/bin;%PATH%
+- set PATH=%QTPATH%;%QTPATH%/bin;%PATH%
 - echo %PATH%
 - mkdir build
 - cd build
