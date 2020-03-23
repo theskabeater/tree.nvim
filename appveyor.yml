@@ -18,7 +18,7 @@ environment:
   #   RELEASE_ARTIFACT: true
   - PlatformToolset: v140
     QTPATH: C:\Qt\5.11\msvc2015
-    GENERATOR: Visual Studio 15 2017
+    GENERATOR: Visual Studio 14
     ARCHI: x86
     BOOST_ROOT: C:\Libraries\boost_1_69_0
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\lib32-msvc-14.0
@@ -36,7 +36,7 @@ install:
 - if "%PlatformToolset%"=="msys2-static" C:\msys64\usr\bin\pacman -S --needed --noconfirm mingw-w64-%ARCH%-gcc mingw-w64-%ARCH%-cmake mingw-w64-%ARCH%-python2 mingw-w64-%ARCH%-qt5-static mingw-w64-%ARCH%-jasper
 - if "%PlatformToolset%"=="mingw-w64" C:\msys64\usr\bin\pacman --needed --noconfirm -S mingw-w64-x86_64-boost
 build_script:
-- cd "C:\msys64\mingw64\include"
+- cd "BOOST_ROOT"
 - dir
 - cd "%APPVEYOR_BUILD_FOLDER%"
 - set PATH=%BOOST_ROOT%;%BOOST_LIBRARYDIR%;%QTPATH%;%QTPATH%/bin;%PATH%
