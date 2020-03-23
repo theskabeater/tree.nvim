@@ -21,8 +21,8 @@ environment:
     GENERATOR: Visual Studio 14
     ARCHI: x64
     BOOST_ROOT: C:\Libraries\boost_1_69_0
-    BOOST_LIBRARY_DIR: C:\Libraries\boost_1_69_0\lib64-msvc-14.0
-    BOOST_INCLUDE_DIR: C:\Libraries\boost_1_69_0\boost
+    Boost_LIBRARIES: C:\Libraries\boost_1_69_0\lib64-msvc-14.0
+    Boost_INCLUDE_DIRS: C:\Libraries\boost_1_69_0\boost
 configuration:
 - RelWithDebInfo
 matrix:
@@ -38,16 +38,16 @@ install:
 build_script:
 - cd "%BOOST_ROOT%"
 - dir
-- cd "%BOOST_LIBRARY_DIR%"
+- cd "%Boost_LIBRARIES%"
 - dir
 - cd "%BOOST_ROOT%\libs"
 - dir
 - cd "%APPVEYOR_BUILD_FOLDER%"
-- set PATH=%BOOST_ROOT%;%BOOST_LIBRARY_DIR%;%QTPATH%;%QTPATH%/bin;%PATH%
+- set PATH=%BOOST_ROOT%;%Boost_LIBRARIES%;%QTPATH%;%QTPATH%/bin;%PATH%
 - echo %PATH%
 - mkdir build
 - cd build
-- cmake -G "%GENERATOR%" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDE_DIR="%BOOST_INCLUDE_DIR%" -DBOOST_LIBRARY_DIR="%BOOST_LIBRARY_DIR%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
+- cmake -G "%GENERATOR%" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDE_DIR="%BOOST_INCLUDE_DIR%" -DBoost_LIBRARIES="%Boost_LIBRARIES%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
 - cmake --build . --config Release --target install
 - windeployqt ./INSTALL/bin/tree --no-plugins --no-translations
 test_script:
