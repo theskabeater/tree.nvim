@@ -13,16 +13,16 @@ environment:
   #   QTPATH: C:\Qt\5.12.6\mingw73_64
   #   GENERATOR: MinGW Makefiles
   #   BOOST_ROOT: C:\msys64\mingw64
-  #   BOOST_LIBRARY_DIR: C:\msys64\mingw64\lib
-  #   BOOST_INCLUDE_DIR: C:\msys64\mingw64\include\boost
+  #   BOOST_LIBRARYDIR: C:\msys64\mingw64\lib
+  #   BOOST_INCLUDEDIR: C:\msys64\mingw64\include\boost
   #   RELEASE_ARTIFACT: true
   - PlatformToolset: v140
     QTPATH: C:\Qt\5.11\msvc2015
     GENERATOR: Visual Studio 14
     ARCHI: x64
     BOOST_ROOT: C:\Libraries\boost_1_69_0
-    Boost_LIBRARIES: C:\Libraries\boost_1_69_0\libs
-    Boost_INCLUDE_DIRS: C:\Libraries\boost_1_69_0\boost
+    BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\libs
+    BOOST_INCLUDEDIR: C:\Libraries\boost_1_69_0\boost
 configuration:
 - RelWithDebInfo
 matrix:
@@ -38,7 +38,7 @@ install:
 build_script:
 - cd "%BOOST_ROOT%"
 - dir
-- cd "%Boost_LIBRARIES%"
+- cd "%BOOST_ROOT%\boost"
 - dir
 - cd "%BOOST_ROOT%\libs"
 - dir
@@ -47,7 +47,7 @@ build_script:
 - echo %PATH%
 - mkdir build
 - cd build
-- cmake -G "%GENERATOR%" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDE_DIR="%BOOST_INCLUDE_DIRS%" -DBoost_LIBRARIES="%Boost_LIBRARIES%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
+- cmake -G "%GENERATOR%" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDEDIR="%BOOST_INCLUDEDIR%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
 - cmake --build . --config Release --target install
 - windeployqt ./INSTALL/bin/tree --no-plugins --no-translations
 test_script:
