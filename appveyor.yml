@@ -21,7 +21,7 @@ environment:
     GENERATOR: Visual Studio 14
     ARCHI: x64
     BOOST_ROOT: C:\Libraries\boost_1_69_0
-    Boost_LIBRARIES: C:\Libraries\boost_1_69_0\lib32-msvc-14.0
+    Boost_LIBRARIES: C:\Libraries\boost_1_69_0\libs
     Boost_INCLUDE_DIRS: C:\Libraries\boost_1_69_0\boost
 configuration:
 - RelWithDebInfo
@@ -47,7 +47,7 @@ build_script:
 - echo %PATH%
 - mkdir build
 - cd build
-- cmake -G "%GENERATOR%" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDE_DIR="%BOOST_INCLUDE_DIR%" -DBoost_LIBRARIES="%Boost_LIBRARIES%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
+- cmake -G "%GENERATOR%" -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDE_DIR="%BOOST_INCLUDE_DIRS%" -DBoost_LIBRARIES="%Boost_LIBRARIES%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
 - cmake --build . --config Release --target install
 - windeployqt ./INSTALL/bin/tree --no-plugins --no-translations
 test_script:
