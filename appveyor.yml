@@ -38,6 +38,8 @@ install:
 build_script:
 - cd "%BOOST_ROOT%"
 - dir
+- cd "%BOOST_LIBRARYDIR%"
+- dir
 - cd "%APPVEYOR_BUILD_FOLDER%"
 - set PATH=%BOOST_ROOT%;%BOOST_LIBRARYDIR%;%QTPATH%;%QTPATH%/bin;%PATH%
 - echo %PATH%
