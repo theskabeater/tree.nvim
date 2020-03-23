@@ -18,7 +18,7 @@ environment:
   #   RELEASE_ARTIFACT: true
   - PlatformToolset: v140
     QTPATH: C:\Qt\5.11\msvc2015
-    GENERATOR: Visual Studio 15
+    GENERATOR: Visual Studio 15 2017
     ARCHI: x86
     BOOST_ROOT: C:\Libraries\boost_1_69_0
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\lib32-msvc-14.0
