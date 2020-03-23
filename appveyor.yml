@@ -20,8 +20,8 @@ environment:
   #   RELEASE_ARTIFACT: true
   - PlatformToolset: v140
     # QTPATH: C:\Qt\5.11\msvc2015
-    # GENERATOR: Visual Studio 16 2019
-    GENERATOR: 'NMake Makefiles'
+    GENERATOR: Visual Studio 16 2019
+    # GENERATOR: 'NMake Makefiles'
     ARCHI: x86
     BOOST_ROOT: C:\Libraries\boost_1_71_0
     # BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\lib32-msvc-17.1
