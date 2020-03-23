@@ -19,7 +19,7 @@ environment:
   - PlatformToolset: v140
     QTPATH: C:\Qt\5.11\msvc2015
     GENERATOR: Visual Studio 14
-    ARCHI: x86
+    ARCHI: x64
     BOOST_ROOT: C:\Libraries\boost_1_69_0
     BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\lib64-msvc-14.0
     BOOST_INCLUDEDIR: C:\Libraries\boost_1_69_0\boost
