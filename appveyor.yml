@@ -19,8 +19,6 @@ environment:
   #   QTPATH: C:\Qt\5.12.6\mingw73_64
   #   GENERATOR: MinGW Makefiles
   #   BOOST_ROOT: C:\msys64\mingw64
-  #   BOOST_LIBRARYDIR: C:\msys64\mingw64\lib
-  #   BOOST_INCLUDEDIR: C:\msys64\mingw64\include\boost
   #   RELEASE_ARTIFACT: true
   - PlatformToolset: v140
     # QTPATH: C:\Qt\5.11\msvc2015
@@ -31,8 +29,6 @@ environment:
     ARCHI: x86
     # GENERATOR: Visual Studio 16 2019
     # BOOST_ROOT: C:\Libraries\boost_1_71_0
-    # BOOST_LIBRARYDIR: C:\Libraries\boost_1_69_0\lib32-msvc-17.1
-    # BOOST_INCLUDEDIR: C:\Libraries\boost_1_69_0\boost
 configuration:
 - RelWithDebInfo
 matrix:
@@ -42,7 +38,7 @@ install:
 - if "%PlatformToolset%"=="mingw-w64" set PATH=C:\mingw-w64\x86_64-7.3.0-posix-seh-rt_v5-rev0\mingw64\bin;%PATH:C:\Program Files\Git\usr\bin;=%
 # - if "%PlatformToolset%"=="v140" call "%VCVAR2015%" %ARCHI%
 # Static qt5 builds using msys2/mingw packages
-- if "%PlatformToolset%"=="v140" call "%VCVAR2019%" %ARCHI%
+- if "%PlatformToolset%"=="v140" call "%VCVAR2017%" %ARCHI%
 - if "%PlatformToolset%"=="msys2-static" set PATH=C:\msys64\mingw%BITS%\bin;%PATH:C:\Program Files\Git\usr\bin;=%
 - if "%PlatformToolset%"=="msys2-static" C:\msys64\usr\bin\pacman -S --needed --noconfirm mingw-w64-%ARCH%-gcc mingw-w64-%ARCH%-cmake mingw-w64-%ARCH%-python2 mingw-w64-%ARCH%-qt5-static mingw-w64-%ARCH%-jasper
 - if "%PlatformToolset%"=="mingw-w64" C:\msys64\usr\bin\pacman --needed --noconfirm -S mingw-w64-x86_64-boost
@@ -56,7 +52,6 @@ build_script:
 - echo %PATH%
 - mkdir build
 - cd build
-# -DBOOST_ROOT="%BOOST_ROOT%" -DBOOST_INCLUDEDIR="%BOOST_INCLUDEDIR%" -DBOOST_LIBRARYDIR="%BOOST_LIBRARYDIR%"
 - cmake -G "%GENERATOR%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../INSTALL %EXTRA_CMAKE_ARGS% ..
 - cmake --build . --config Release --target install
 - windeployqt ./INSTALL/bin/tree --no-plugins --no-translations
